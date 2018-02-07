@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Manual Entry
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+          <ion-item>
+              <ion-label>Event Name</ion-label>
+              <ion-select interface="action-sheet" [(ngModel)]="selectedEvent">
+                  <ion-option *ngFor="let item of event" >{{item}}</ion-option>
+                  <ion-option *ngFor="let item of workshop" >{{item}}</ion-option>
+              </ion-select>
+            </ion-item>
+    </ion-list>
+  </ion-content>
+  
