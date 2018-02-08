@@ -1,13 +1,20 @@
 <ion-header>
     <ion-navbar>
       <ion-title>
-        Manual Entry
+        Manually Enter Details
       </ion-title>
     </ion-navbar>
   </ion-header>
   
   <ion-content>
-    <ion-list>
+    <ion-grid style="margin-top: 10rem;" *ngIf="loading === true">
+      <ion-row>
+        <ion-col col-3 offset-5>
+            <ion-spinner ></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list style="margin-top: 2rem;" *ngIf="loading === false">
           <ion-item>
               <ion-label>Event Name</ion-label>
               <ion-select interface="action-sheet" [(ngModel)]="selectedEvent">
@@ -15,6 +22,34 @@
                   <ion-option *ngFor="let item of workshop" >{{item}}</ion-option>
               </ion-select>
             </ion-item>
+            <div *ngFor="let participant of participants let i = index" [attr.data-index]="i">
+            <ion-item >
+              <ion-label>Participant {{i}} Name</ion-label>
+              <ion-input [(ngModel)]="participants[i].displayName"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label>Participant {{i}} Email</ion-label>
+                <ion-input [(ngModel)]="participants[i].email"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label>Participant {{i}} Mobile</ion-label>
+                <ion-input [(ngModel)]="participants[i].mobno"></ion-input>
+            </ion-item>
+            <ion-item >
+                <ion-label>Participant {{i}} College</ion-label>
+                <ion-input [(ngModel)]="participants[i].college"></ion-input>
+            </ion-item>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-1 offset-8>
+                  <ion-icon name="add-circle" (click)="addParticipants()"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+              <button style="width:100%; margin-top:1rem; height:5rem; " ion-button (click)="submit()"> Submit </button>
+          </ion-item>
     </ion-list>
   </ion-content>
   

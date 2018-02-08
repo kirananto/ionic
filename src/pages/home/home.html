@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Techkshetra 2k18 Registration App</ion-title>
+    <ion-title>T18 EVENTS SCAN</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,9 @@
         </ion-col>
       </ion-row>
   </ion-grid>
+  <h2> Total Collection so far {{collection}}</h2>
   <h2>Selected :{{selected?selected:0}} items</h2>
+  <h2 *ngIf="amount != null">Please pay {{amount}} Rupees</h2>
 <h2>List will appear here</h2>
 <ion-spinner *ngIf="loading === true"></ion-spinner>
   <div *ngIf="data">
@@ -42,8 +44,9 @@
      </ion-list>
   </div>
 </div>
-<div *ngIf="user === null" style="margin-top:20rem;">
-    <ion-item>
+<div *ngIf="user === null" style="margin-top:3rem;">
+    <img offset-3 src="https://cdn.rawgit.com/kirananto/Techkshetra18/master/static/techkshetra_logo.svg" width="50%" alt="">
+    <ion-item style="margin-top:3rem;">
         <ion-label>Username</ion-label>
         <ion-input type="email" [(ngModel)]="username"></ion-input>
       </ion-item>
@@ -51,6 +54,6 @@
           <ion-label>Password</ion-label>
           <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
-    <button style="width:100%; margin-top:10rem; height:10rem;" ion-button (click)="login()"> Login </button>
+    <button style="width:100%; margin-top:2rem; height:5rem;" ion-button (click)="login()"> Login </button>
 </div>
 </ion-content>
