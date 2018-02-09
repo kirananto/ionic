@@ -23,19 +23,19 @@
               </ion-select>
             </ion-item>
             <div *ngFor="let participant of participants let i = index" [attr.data-index]="i">
-            <ion-item >
+            <ion-item style="padding-top:1rem;" >
               <ion-label>Participant {{i}} Name</ion-label>
               <ion-input [(ngModel)]="participants[i].displayName"></ion-input>
             </ion-item>
-            <ion-item >
+            <ion-item style="padding-top:1rem;"  >
                 <ion-label>Participant {{i}} Email</ion-label>
                 <ion-input [(ngModel)]="participants[i].email"></ion-input>
             </ion-item>
-            <ion-item >
+            <ion-item style="padding-top:1rem;" >
                 <ion-label>Participant {{i}} Mobile</ion-label>
                 <ion-input [(ngModel)]="participants[i].mobno"></ion-input>
             </ion-item>
-            <ion-item >
+            <ion-item style="padding-top:1rem;" >
                 <ion-label>Participant {{i}} College</ion-label>
                 <ion-input [(ngModel)]="participants[i].college"></ion-input>
             </ion-item>
@@ -43,7 +43,7 @@
           <ion-grid>
             <ion-row>
               <ion-col col-1 offset-8>
-                  <ion-icon name="add-circle" (click)="addParticipants()"></ion-icon>
+                  <ion-icon large style="font-size:4rem" name="add-circle" (click)="addParticipants()"></ion-icon>
               </ion-col>
             </ion-row>
           </ion-grid>

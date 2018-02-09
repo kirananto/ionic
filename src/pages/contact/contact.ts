@@ -57,6 +57,10 @@ export class ContactPage {
     this.selected = this.tobePaid.length
   };
   public scan() {
+    this.data = []
+    this.amount = 0
+    this.tobePaid = []
+    this.selected = null
     this.barcodeScanner.scan().then((barcodeData) => {
         this.scanData = barcodeData.text;
         // this.scanData = 'ZZoTctfaWiXxWumaiwnIClYpk8A2'
@@ -138,6 +142,9 @@ export class ContactPage {
                     buttons: ['OK']
                   }).present()
                   this.tobePaid = []
+                  this.amount = 0
+                  this.data = []
+                  this.selected = null
                 })
                 
               }).catch(err => {

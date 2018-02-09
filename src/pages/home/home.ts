@@ -56,6 +56,10 @@ export class HomePage {
     this.selected = this.tobePaid.length
   };
   public scan() {
+    this.tobePaid = []
+    this.amount = 0
+    this.data = []
+    this.selected = null
     this.db.collection('cashiers').doc('todays').collection(this.firebaseAuth.auth.currentUser.uid).ref.get().then(query => {
       console.log(query.size)
       query.forEach(doc => {
@@ -135,6 +139,9 @@ export class HomePage {
                   buttons: ['OK']
                 }).present()
                 this.tobePaid = []
+                this.amount = 0
+                this.data = []
+                this.selected = null
               })
               
             }).catch(err => {

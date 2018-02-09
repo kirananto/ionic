@@ -24,7 +24,7 @@ export class AboutPage {
   user: any;
   constructor(public navCtrl: NavController, private db: AngularFirestore, public alertCtrl: AlertController,private firebaseAuth: AngularFireAuth) {
       this.user = this.firebaseAuth.auth.currentUser
-      this.db.collection('events').ref.get().then(query => {
+      this.db.collection('events').ref.where('open', '==', true).get().then(query => {
         this.event = []
         this.loading = false
         query.forEach(doc => {
@@ -32,7 +32,7 @@ export class AboutPage {
           this.event.push(doc.data().id)
         })
       }).catch(err => console.log(err))
-      this.db.collection('workshops').ref.get().then(query => {
+      this.db.collection('workshops').ref.where('open', '==', true).get().then(query => {
         this.workshop = []
         query.forEach(doc => {
           this.events.push(doc.data())
@@ -57,6 +57,11 @@ export class AboutPage {
               mobno: null,
               college: null
             })
+            console.log('d')
+          } else if (this.participants.length === e[0].max_participants) {
+          } else {
+            this.participants.pop()
+            console.log('s')
           }
         }
     }
@@ -131,6 +136,13 @@ export class AboutPage {
                             subTitle: 'Successfully Registered',
                             buttons: ['OK']
                           }).present()
+                          this.participants = [{
+                            displayName: null,
+                            email: null,
+                            mobno: null,
+                            college: null
+                          }]
+                          this.selectedEvent = ''
                         })
                       })
                     }
